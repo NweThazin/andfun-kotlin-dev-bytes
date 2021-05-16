@@ -18,13 +18,14 @@
 package com.example.android.devbyteviewer.database
 
 import android.content.Context
+import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.room.*
 
 @Dao
 interface VideoDao {
-    @Query("SELECT * FROM databasevideo")
-    fun getVideos(): MutableLiveData<List<DatabaseVideo>>
+    @Query("select * from databasevideo")
+    fun getVideos(): LiveData<List<DatabaseVideo>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     fun insertAll(vararg videos: DatabaseVideo)
